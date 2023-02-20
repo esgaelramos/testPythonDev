@@ -12,9 +12,6 @@ class TestLoginEndPoint(unittest.TestCase):
         self.client = app.test_client()
 
     def test_successful_login(self):
-        # Creamos un usuario en la base de datos para probar la autenticación
-        self.client.post('/api/Seguridad/crear_usuario/', data=json.dumps({'usuario': 'testuser', 'contrasena': 'testpass'}), content_type='application/json')
-
         # Realizamos una petición POST con credenciales correctas
         response = self.client.post('/api/Seguridad/login/', data=json.dumps({'usuario': 'testuser', 'contrasena': 'testpass'}), content_type='application/json')
 
@@ -40,10 +37,6 @@ class TestLoginEndPoint(unittest.TestCase):
         self.assertIn('description', data)
         self.assertFalse(data['estado'])
         self.assertEqual(data['description'], 'Usuario o contrasena incorrectos')
-
-    def tearDown(self):
-        # Eliminamos el usuario creado en la base de datos para las pruebas
-        self.client.post('/api/Seguridad/eliminar_usuario/', data=json.dumps({'usuario': 'testuser'}), content_type='application/json')
 
 
 # tests for cli 
