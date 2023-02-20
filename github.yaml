@@ -1,0 +1,30 @@
+name: test-pipeline
+
+# Variables de entorno para las etapas (not today)
+# env:
+#   DB_HOST: localhost
+#   DB_USER: user
+#   DB_PASS: pass
+#   APP_PORT: 5000
+
+# Definición de las etapas del pipeline
+stages:
+  # Etapa de inicialización
+  - name: Inicialización
+    steps:
+      - name: Instalar dependencias
+        run: pip install -r requirements.txt
+      - name: Instalar base de datos
+        run:  sudo apt install sqlite3
+      - name: Crear base de datos
+        run: sqlite3 dbtestdev.sqlite < create_db.sql
+  # Etapa de pruebas
+  - name: Pruebas
+    steps:
+      - name: Ejecutar pruebas unitarias
+        run: python -m unittest -v
+  # Etapa de despliegue
+  - name: Despliegue
+    steps:
+      - name: Desplegar aplicación
+        run: echo 'Imagine a deploy in a Ubuntu VPS from DigitalOcean'

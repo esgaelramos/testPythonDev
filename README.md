@@ -66,6 +66,12 @@ Create DB in your local machine
 ```
     python3 cli.py login -u testuser -p testpass
 ```
+### See and Test Docs with Swagger
+```
+    http://127.0.0.1:5000/apidocs/
+```
+![Docs Image 1](/git_assets/docs1.png)
+![Docs Image 2](/git_assets/docs2.png)
 
 ### Test API With CURL
 
