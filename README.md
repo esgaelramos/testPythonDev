@@ -77,7 +77,7 @@ curl --header "Content-Type: application/json" --request POST --data '{"usuario"
 ### If you're using Ubuntu:
 
 ```
-    sh init.sh
+    sh test_all.sh
 ```
 
 
